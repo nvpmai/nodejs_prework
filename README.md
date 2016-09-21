@@ -193,3 +193,7 @@ The follow http header(s) are supported:
 ##### `x-destination-url`
 
 Specify the destination url on a per request basis. Overrides and follows the same format as the `--url` argument.
+
+## References
+https://github.com/linghuaj/node-proxy-server
+http://stackoverflow.com/questions/34835859/node-js-https-example-error-unknown-ssl-protocol-error-in-connection-to-localh
