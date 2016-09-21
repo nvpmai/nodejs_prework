@@ -44,6 +44,12 @@ curl http://127.0.0.1:9000 -d "Hi google"
 nodemon index.js --h
 cat index.js | nodemon index.js --exec "grep require"
 
+
+#### --exec; --h; x-destination-url
+```bash
+nodemon index.js --h
+cat index.js | nodemon index.js --exec "grep require"
+
 nodemon index.js
 curl http://127.0.0.1:9000 -H 'x-destination-url:http://webtretho.com'
 ```
