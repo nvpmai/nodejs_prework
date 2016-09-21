@@ -43,7 +43,6 @@ if (argv.url_ssl) {
     var httpsOptions = {
         key: fs.readFileSync('./https/client-key.pem'),
         cert: fs.readFileSync('./https/client-cert.pem'),
-        rejectUnauthorized: false
     }
 
     url = argv.url_ssl
@@ -67,7 +66,6 @@ http.createServer((req, res) => {
 
 proxyServer.on('request', (req, res) => {
     let url = destinationUrl
-    // logStream.write('Request proxied to: ${url + req.url}: \n' + JSON.stringify(req.headers))
     myLog.debug('Proxy Request Headers: ' + JSON.stringify(req.headers))
 
     if (req.headers['x-destination-url']) {
@@ -88,5 +86,4 @@ proxyServer.on('request', (req, res) => {
     downstreamResponse.pipe(res)
 
 })
-
 proxyServer.listen(9000)
