@@ -1,8 +1,8 @@
 # Proxy Server
 
-This is a Proxy Server for Node.js submitted as the [pre-work](http://courses.codepath.com/snippets/intro_to_nodejs/prework) requirement for CodePath.
+This is a Proxy Server for Node.js submitted as the [pre-work](http://courses.codepath.com/snippets/intro_to_nodejs/prework) requirement for CoderSchool.
 
-Time spent: [Write the number of hours you spend here]
+Time spent: 20 hours
 
 Completed:
 
@@ -13,14 +13,23 @@ Completed:
 * [x] Required: Client requests and respones are printed to stdout
 * [x] Required: The `--logfile` argument outputs all logs to the file specified instead of stdout
 * [x] Optional: The `--exec` argument proxies stdin/stdout to/from the destination program
-* [] Optional: The `--loglevel` argument sets the logging chattiness
-* [] Optional: Supports HTTPS
+* [x] Optional: The `--loglevel` argument sets the logging chattiness
+* [x] Optional: Supports HTTPS
 * [x] Optional: `-h` argument prints CLI API
 
 Walkthrough Gif:
-[Add walkthrough.gif to the project root]
 
-![Video Walkthrough](walkthrough.gif)
+#### --host; --url
+```bash
+nodemon index.js --url http://kenh14.vn/
+curl http://127.0.0.1:9000 -d "Hi kenh14"
+
+nodemon index.js --host google.com
+curl http://127.0.0.1:9000 -d "Hi google"
+```
+![--host; --url](http://imgur.com/TRDo2No)
+
+###
 
 Note: to embed the gif file, just check your gif file into your repo and update the name of the file above.
 
@@ -37,12 +46,11 @@ npm start
 ```bash
 curl -v -X POST http://127.0.0.1:8000 -d "hello self" -H "x-asdf: yodawg"
 * Rebuilt URL to: http://127.0.0.1:8000/
-* Hostname was NOT found in DNS cache
 *   Trying 127.0.0.1...
 * Connected to 127.0.0.1 (127.0.0.1) port 8000 (#0)
 > POST / HTTP/1.1
-> User-Agent: curl/7.37.1
 > Host: 127.0.0.1:8000
+> User-Agent: curl/7.43.0
 > Accept: */*
 > x-asdf: yodawg
 > Content-Length: 10
@@ -50,13 +58,13 @@ curl -v -X POST http://127.0.0.1:8000 -d "hello self" -H "x-asdf: yodawg"
 >
 * upload completely sent off: 10 out of 10 bytes
 < HTTP/1.1 200 OK
-< user-agent: curl/7.37.1
 < host: 127.0.0.1:8000
+< user-agent: curl/7.43.0
 < accept: */*
 < x-asdf: yodawg
 < content-length: 10
 < content-type: application/x-www-form-urlencoded
-< Date: Mon, 13 Apr 2015 00:45:50 GMT
+< Date: Wed, 21 Sep 2016 00:39:30 GMT
 < Connection: keep-alive
 <
 * Connection #0 to host 127.0.0.1 left intact
@@ -69,25 +77,24 @@ Port 9000 will proxy to the echo server on port 8000.
 
 ```bash
 curl -v http://127.0.0.1:9000/asdf -d "hello proxy"
-* Hostname was NOT found in DNS cache
 *   Trying 127.0.0.1...
 * Connected to 127.0.0.1 (127.0.0.1) port 9000 (#0)
 > POST /asdf HTTP/1.1
-> User-Agent: curl/7.37.1
 > Host: 127.0.0.1:9000
+> User-Agent: curl/7.43.0
 > Accept: */*
 > Content-Length: 11
 > Content-Type: application/x-www-form-urlencoded
 >
 * upload completely sent off: 11 out of 11 bytes
 < HTTP/1.1 200 OK
-< user-agent: curl/7.37.1
 < host: 127.0.0.1:9000
+< user-agent: curl/7.43.0
 < accept: */*
 < content-length: 11
 < content-type: application/x-www-form-urlencoded
 < connection: close
-< date: Mon, 13 Apr 2015 02:03:29 GMT
+< date: Wed, 21 Sep 2016 00:41:04 GMT
 <
 * Closing connection 0
 hello proxy
