@@ -19,7 +19,16 @@ Completed:
 
 Walkthrough Gif:
 
-#### --host; --url
+### Echo and Proxy Server
+```bash
+nodemon index.js
+curl -v http://127.0.0.1:8000 -d "hello self" -H "x-wg"f: yodaw
+curl -v http://127.0.0.1:9000 -d "hello self" -H "x-wg"f: yodaw
+```
+![echo and proxy server](https://github.com/nvpmai95/nodejs_prework/blob/master/gifs/echo_proxy.gif)
+
+
+### --host; --url
 ```bash
 nodemon index.js --url http://kenh14.vn/
 curl http://127.0.0.1:9000 -d "Hi kenh14"
@@ -27,11 +36,39 @@ curl http://127.0.0.1:9000 -d "Hi kenh14"
 nodemon index.js --host google.com
 curl http://127.0.0.1:9000 -d "Hi google"
 ```
-![--host; --url](http://imgur.com/TRDo2No)
+![--host; --url](https://github.com/nvpmai95/nodejs_prework/blob/master/gifs/host_url.gif)
 
-###
 
-Note: to embed the gif file, just check your gif file into your repo and update the name of the file above.
+### --exec; --h; x-destination-url
+```bash
+nodemon index.js --h
+cat index.js | nodemon index.js --exec "grep require"
+
+nodemon index.js
+curl http://127.0.0.1:9000 -H 'x-destination-url:http://webtretho.com'
+```
+![--exec; --h; x-destination-url](https://github.com/nvpmai95/nodejs_prework/blob/master/gifs/exec_h_x_url.gif)
+
+
+### --logfile; --loglevel
+```bash
+nodemon index.js --logfile log.txt --loglevel DEBUG
+curl http://127.0.0.1:8000 -d "Hi Google"
+
+nodemon index.js --logfile log.txt --loglevel INFORMATIONAL
+curl http://127.0.0.1:8000 -d "Hi Google"
+```
+![--logfile; --loglevel](https://github.com/nvpmai95/nodejs_prework/blob/master/gifs/logfile_loglevel.gif)
+
+
+### --url-ssl
+Make proxy Server support https
+```bash
+nodemon index.js --url-ssl http://127.0.0.1:8000
+curl -k https://127.0.0.1:9000 -v
+```
+![--url-ssl](https://github.com/nvpmai95/nodejs_prework/blob/master/gifs/ssl.gif)
+
 
 ## Starting the Server
 
@@ -118,9 +155,30 @@ The port of the destination server. Defaults to `80` or `8000` when a host is no
 
 A single url that overrides the above. E.g., `http://www.google.com`
 
+##### `--url_ssl`
+
+Specify a forwarding http(s) url. Make proxy server support https
+
 ##### `--logfile`
 
 Specify a file path to redirect logging to.
+
+##### `--loglevel`
+
+Specify the level to which only output logs greater than or equal to is recorded.
+ALERT: 0,
+ERROR: 1,
+WARNING: 2,
+INFORMATIONAL: 3,
+DEBUG: 4
+
+##### `--h`
+
+List all possible arguments for the server.
+
+##### `--exec`
+
+Specify stdin/stdout to/from the destination program.
 
 #### Headers
 
